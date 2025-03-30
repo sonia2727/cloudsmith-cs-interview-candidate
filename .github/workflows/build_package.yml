@@ -34,6 +34,9 @@ jobs:
           pip install build
 
       - name: Build package
+        run: |
+          python -m build
+          ls -la dist/  # List the contents of the dist directory
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
