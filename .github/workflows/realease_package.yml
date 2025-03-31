@@ -39,7 +39,7 @@ jobs:
           value=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq '.value')
           echo "OIDC Token: $value"
           # Make a POST request to the Cloudsmith OpenID endpoint to receive the JWT token
-          token=$(curl -X POST -H "Content-Type: application/json" -d "{\"oidc_token\":$value, \"service_slug\":\"CLOUDSMITH_SERVICE_SLUG\"}" https://api.cloudsmith.io/openid/githubactions-sa/ | jq -r '.token')
+          token=$(curl -X POST -H "Content-Type: application/json" -d "{\"oidc_token\":$value, \"service_slug\":\"CLOUDSMITH_SERVICE_SLUG\"}" https://api.cloudsmith.io/openid/interview-sonia-sharma/ | jq -r '.token')
           echo "Token: $token"
           # Validate the token by making a GET request to the Cloudsmith API
           curl --request GET --url https://api.cloudsmith.io/v1/user/self/ --header "X-Api-Key:Bearer $token" --header 'accept: application/json'        
